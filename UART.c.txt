@@ -1,0 +1,30 @@
+#include <xc.h>
+
+void UART_Init() {
+    TRISC6 = 0; // TX as output
+    TRISC7 = 1; // RX as input
+    SPBRG = 0x04; // For 9600 baud at 8MHz, BRGH = 1
+    BRGH = 1; // High-speed baud
+    SYNC = 0; // Asynchronous mode
+    SPEN = 1; // Enable serial port
+    TXEN = 1; // Enable transmitter
+    CREN = 1; // Enable receiver
+}
+
+void UART_TxChar(char data) {
+    while (!TXIF); // Wait until TX buffer is empty
+    TXREG = data; // Transmit data
+}
+
+char UART_RxChar() {
+    while (!RCIF); // Wait until data is received
+    return RCREG; // Read received data
+}
+
+void main() {
+    UART_Init();
+    while (1) {
+        char ch = UART_RxChar(); // Receive char
+        UART_TxChar(ch); // Echo back
+    }
+}
