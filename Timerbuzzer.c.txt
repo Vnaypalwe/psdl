@@ -1,0 +1,25 @@
+#include <xc.h>
+#define _XTAL_FREQ 20000000 // 20MHz Crystal
+
+void __interrupt() Timer0_ISR(void) {
+    if (INTCONbits.TMR0IF) {
+        INTCONbits.TMR0IF = 0; // Clear interrupt flag
+        TMR0L = 6; // Reload Timer0 for 1ms delay
+        LATAbits.LATA5 = ~LATAbits.LATA5; // Toggle buzzer
+    }
+}
+
+void main() {
+    TRISAbits.TRISA5 = 0; // Set PORTC as output (Buzzer)
+    PORTA = 0x00; // Initialize Buzzer off
+
+    // Timer0 Configuration
+    TOCON = 0b11000111; // Enable Timer0, 8-bit mode, Prescaler 1:256
+    TMR0L = 6; // Load Timer0 with initial value
+
+    // Enable Interrupts
+    INTCONbits.TMR0IE = 1; // Enable Timer0 interrupt
+    INTCONbits.GIE = 1; // Enable Global Interrupt
+
+    while(1);
+}
