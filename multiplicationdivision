@@ -1,0 +1,21 @@
+#include <xc.h>
+int a = 8, b = 4, c;
+int ch = 1; // 1 = multiply, 2 = divide
+
+void main(void) {
+    TRISD = 0x00;
+    PORTD = 0x00;
+    switch(ch) {
+        case 1:
+            c = a * b;
+            break;
+        case 2:
+            c = a / b;
+            break;
+        default:
+            c = 0;
+            break;
+    }
+    PORTD = c;
+    while(1);
+}
