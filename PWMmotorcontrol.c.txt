@@ -1,0 +1,55 @@
+#include <pic18f4550.h>
+#define FREQ_PWM 50 // Frequency of PWM signal in Hz
+
+void initPWM() {
+    TRISCbits.TRISC1 = 0; // RC1 pin as output (CCP1)
+    TRISCbits.TRISC2 = 0; // RC2 pin as output (CCP2)
+    T2CONbits.T2CKPS = 0b11; // Prescaler 16
+    T2CONbits.TMR2ON = 1; // Enable Timer2
+    PR2 = 150; // Period register for 8-bit resolution
+    CCP1CONbits.CCP1M = 0b1100; // PWM mode for CCP1
+    CCP2CONbits.CCP2M = 0b1100; // PWM mode for CCP2
+    CCPR1L = 128; // Initial duty cycle for motor 1 (50%)
+    CCPR2L = 128; // Initial duty cycle for motor 2 (50%)
+    INTCONbits.GIE = 1; // Enable Global Interrupts
+}
+
+void setPWMDutyCycle(unsigned char motor, unsigned char dutyCycle) {
+    if (motor == 1) {
+        CCPR1L = dutyCycle; // Set duty cycle for motor 1
+    } else if (motor == 2) {
+        CCPR2L = dutyCycle; // Set duty cycle for motor 2
+    }
+}
+
+void delay_ms(unsigned int ms) {
+    unsigned int i,j;
+    for(i = 0; i < ms; i++) {
+        for(j = 0; j < 1000; j++);
+    }
+}
+
+void main() {
+    initPWM();
+    setPWMDutyCycle(1, 128); // 50% duty cycle for motor 1
+    setPWMDutyCycle(2, 128); // 50% duty cycle for motor 2
+
+    while(1) {
+        for (unsigned char duty = 0; duty < 255; duty++) {
+            setPWMDutyCycle(1, duty);
+            delay_ms(50);
+        }
+        for (unsigned char duty = 255; duty > 0; duty--) {
+            setPWMDutyCycle(1, duty);
+            delay_ms(50);
+        }
+        for (unsigned char duty = 0; duty < 255; duty++) {
+            setPWMDutyCycle(2, duty);
+            delay_ms(50);
+        }
+        for (unsigned char duty = 255; duty > 0; duty--) {
+            setPWMDutyCycle(2, duty);
+            delay_ms(50);
+        }
+    }
+}
