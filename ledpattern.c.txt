@@ -1,0 +1,30 @@
+#include <xc.h>
+#include <pic18f4550.h>
+
+void delay(unsigned int time) {
+    int i, j;
+    for (i = 0; i < time; i++)
+        for (j = 0; j < 5000; j++);
+}
+
+void main(void) {
+    TRISB = 0x00;   // Set PORTB as output
+    LATB = 0x00;    // Clear all LEDs initially
+
+    while(1) {
+        for (int i = 1; i <= 3; i++) {
+            switch(i) {
+                case 1:
+                    LATB = 0xAA;  // 10101010
+                    break;
+                case 2:
+                    LATB = 0xFF;  // 11111111
+                    break;
+                case 3:
+                    LATB = 0x00;  // 00000000
+                    break;
+            }
+            delay(100);  // Delay between patterns
+        }
+    }
+}
