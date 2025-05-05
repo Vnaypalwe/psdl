@@ -1,12 +1,509 @@
-#include <xc.h>
-int arr[] = {1,2,3,4,5,6,7,8,9};
-int i, sum;
+DMSL Practical Exam Question Bank
+1
+Create Order Management System with at least 3 entities using MySQL and Implement Following Statements
+1.
+Display the name of customers who have maximum orders.
+2.
+Display the Mob No of customers who have highest Buying Total.
+3.
+Display how many customers are there in customer collection.
+4.
+Using collection of customer, and $exists, tell me how many customers belongs from pune city.
+5.
+Find the customer who purchased shoes and cloth product.
+6.
+Find the top 10 buyers.
+7.
+Display all the orders where total amount is >1000.
+8.
+Display all the customers with corresponding buying price.
+9.
+Write a PROCEDURE which will return the Total Price per Customer.
+2
+Design the MySQL Database with following entities,
+dept (dept-no, dname, LOC)
+emp (emp-no, ename, designation,sal)
+project (proj-no, proj-name, status)
+dept and emp are related as 1 to many.
+project and emp are related as 1 to many.
+Write relational or sq1 expressions for the following :
+i) List all employees of ‘INVENTORY’ department of ‘PUNE’ location.
+ii) Give the names of employees who are working on ‘Blood Bank’ project.
+iii) Give the name of managers from ‘MARKETING’ department.
+iv) Give all the employees working under status ‘INCOMPLETE’ projects.
+v) Write a Procedure block that updates the salaries of the employees as per the following rules.
+•
+If the designation is CLERK and deptno is 10 then increase the salary by 20%
+•
+If the designation is MANAGER and deptno is 20 then increase the salary by 5%
+3
+Design the MySQL Database Schema for Video Library scenario
+Customer (cust_no: integer,cust_name: string)
+Membership (Mem_no: integer, cust_no: integer)
+Cassette (cass_no:integer, cass_name:string, Language: String)
+Iss_rec (iss_no: integer, iss_date: date, mem_no: integer, cass_no: integer)
+For the above schema, perform the following:-
+a)
+List all the customer names with their membership numbers
+b)
+List all the issues for the current date with the customer names and cassette names
+c)
+List the details of the customer who has borrowed the cassette whose title is “ The Legend”
+d)
+Give a count of how many cassettes have been borrowed by each customer
+e)
+Write a trigger to delete a Customer record
+4
+Design the MySQL Database with following entities,
+•
+SAILORS (SID: INTEGER, SNAME:STRING, RATING:INTEGER(Must be in between 1 to 10), AGE:REAL)
+•
+BOATS (BID: INTEGER, BNAME: STRING, COLOR: STRING)
+•
+RESERVES (SID: INTEGER, BID: INTEGER, DAY: DATE)
+Make appropriate tables and add required data for the above database. Frame and execute the SQL queries for the following:
+1.
+Find the names of sailors who have reserved boat number 123.
+2.
+Find names of the sailors who have reserved at least one boat.
+3.
+Find average age of Expert sailors.
+4.
+Write the following queries on Expert Sailor View.
+4.1
+Find the Sailors with age > 25 and rating equal to 10.
+4.2
+Find the total number of Sailors in Expert Sailor view.
+4.3
+Find the number of Sailors at each rating level ( 8, 9, 10).
+5.
+Write appropriate procedure to update rating of sailors by 2 if rating is less than 5, by 1 if rating is >5 and doesn’t change the rating if it is equal to 10.
+5
+Design the MySQL Database with following entities,
+Customer(Cust id : integer, cust_name: string)
+Item(item_id: integer,item_name: string, price: integer)
+Sale(bill_no: integer, bill_data: date, cust_id: integer, item_id: integer, qty_sold: integer)
+For the above schema, perform the following—
+a)
+Create the tables with the appropriate integrity constraints.
+b)
+Insert around 10 records in each of the tables
+c)
+List all the bills for the current date with the customer names and item numbers
+d)
+List the total Bill details with the quantity sold, price of the item and the final amount.
+e)
+List the details of the customer who have bought a product which has a price>200.
+f)
+List the item details and count which are sold as of today.
+g)
+Write a procedure to Give a list of products bought by a customer having cust_id as 5
+6
+Design the MySQL Database Schema for Student Library scenario
+Student(Stud_no : integer,Stud_name: string)
+Membership(Mem_no: integer,Stud_no: integer)
+Book(book_no: integer, book_name:string, author: string)
+Iss_rec(iss_no:integer, iss_date: date, Mem_no: integer, book_no: integer)
+For the above schema, perform the following—
+a)
+Create the tables with the appropriate integrity constraints
+b)
+Insert around 10 records in each of the tables
+c)
+List all the student names with their membership numbers
+d)
+List all the issues for the current date with student and Book names
+e)
+List the details of students who borrowed book whose author is CJDATE
+f)
+Create a view which lists out the iss_no, iss _date, stud_name, book name
+7
+Design the MySQL Database Schema for a Employee-pay scenario
+Employee(emp_id : integer,emp_name: string)
+Department(dept_id: integer,dept_name:string)
+Paydetails(emp_id : integer,dept_id: integer, basic: integer, deductions: integer,
+additions: integer, DOJ: date)
+Payroll(emp_id : integer, pay_date: date)
+For the above schema, perform the following—
+a)
+List the employee details department wise
+b)
+List all the employee names who joined after particular date
+c)
+List the details of employees whose basic salary is between 10,000 and 20,000
+d)
+Give a count of how many employees are working in each department
+e)
+Give a names of the employees whose netsalary>10,000
+f)
+Write a procedure to List the pay details for all employee.
+8
+Consider the relational database
+Supplier (sid, sname, address)
+Parts (pid, pname, color)
+Catalog (sid, pid, cost)
+Write SQL queries for the following:
+i) Find names of suppliers who supply some red parts.
+ii) Find names of all parts whose cost is more than Rs. 25
+iii) Find name of all parts whose color is green.
+iv) Find name of supplier and parts with its color and cost.
+v) Write a trigger which will keep backup of updating part cost
+vi) trigger to prevent insertion of parts with negative cost
+9
+Book = { Book_No ,Book_Name, Author_name , Cost, Category}
+Member = { M_Id , M_Name ,Mship_type, Fees_paid,Max_Books_Allowed, Penalty_Amount }
+Issue ={Lib_Issue_Id , Book_No , M_Id, Issue_Date, Return_date}
+•
+List top 5 books which are issued by Annual members
+•
+List the names of members who has issued the books whose cost is more than 300 rupees and whose author is “Scott Urman”
+•
+Write a query to display number of booked in each category of books issued by all member types.
+•
+Write a trigger make book_name and author name in uppercase
+•
+Write a trigger prompt a message if max_books_Allowed value is greater than 3.
+10
+Design the MySQL Database Schema for student-Lab scenario
+Student (stud_no: integer, stud_name: string, class: string)
+Class (class: string,descrip: string)
+Lab (machi_no: integer, Lab_no: integer, description: String)
+Allotment (Stud_no: Integer, mach_no: integer, dayof week: string)
+For the above schema, perform the following—
+a)
+List all the machine allotments with the student names, lab and machine numbers
+b)
+List the total number of lab allotments day wise
+c)
+Give a count of how many machines have been allocated to the ‘CSIT’ class
+d)
+Give a machine allotment etails of the stud_no 5 with his personal and class details
+e)
+Count for how many machines have been allocated in Lab_no 1 for the day of the week as “Monday”
+f)
+Create a view which lists the machine allotment details for “Thursday”.
+11
+A database consists of following tables.
+PROJECT(PNO, PNAME, CHIEF)
+EMPLOYEE(EMPNO, EMPNAME)
+ASSIGNED(PNO,EMPNO)
+A. Get count of employees working on project.
+B. Get details of employee working on project pr002.
+C. Get details of employee working on project DBMS.
+D. Write a trigger to delete all corresponding records from assigned table if employee id deleted.
+E. Write a trigger to keep back up of assign table records if project is deleted.
+F. Get all employees assigned to a given project number
+12
+You need to create a movie database.
+Create three tables, one for
+actors(AID, name),
+movies(MID, title) and
+actor_role(MID, AID, rolename).
+Use appropriate data types for each of the attributes, and add appropriate primary/foreign key constraints.
+1.
+Insert data to the above tables (approx 3 to 6 rows in each table), including data for actor "Charlie Chaplin", and for yourself (using your roll number as ID).
+2.
+Write a query to list all movies in which actor "Charlie Chaplin" has acted, along with the number of roles he had in that movie.
+3.
+Write a query to list all actors who have not acted in any movie.
+4.
+List names of actors, along with titles of movies they have acted in. If they have not acted in any movie, show the movie title as null.
+5.
+List all roles of a given actor
+6.
+Write a trigger to convert actor name in uppercase.
+13
+Employees (Employee_id,first_name , last_name , email, ph_no , hire_date, Job_id ,Salary, department_id )
+Works(Employee_id,manager_id)
+Departments (Department_id,dept_name , location_id)
+Locations (Location_id , street, city, state , country)
+Jobs (Job_id, job_title ,min_salary , max_salary)
+Job_history(Employee_id , hire_date, leaving_date, salary, job_id, department_id)
+1] Display all the employees in descending order of their salary.
+2] Display employee_id, full name and salary of all employees who have joined in year 2006 according to their seniority.
+3] List name of all departments in location 20,30 and 50
+4] Display the full name of all employees whose first_name or last_name contains ‘a’.
+5] Write a procedure that accepts deptno value from a user, selects the maximum salary and minimum salary paid in the department, from the EMP table
+6] Keep track of old and new salary of employee.
+14
+Create following tables in mysql
+Emp(eno, ename, sal, contact_no, addr, dno)
+project(pno, pname)
+dept(dno, dname, loc)
+assigned_to(eno, pno)
+Write the SQL queries:
+1.
+Gather details of employees working on project 353 and 354.
+2.
+Obtains the details of employees working on the database project.
+3.
+Find the employee nos of employees who work on at least one project that employee 107 works on.
+4.
+Find the employee no of employees who work on all of the projects that employee 107 works on.
+5.
+Find the project with minimum no of employees.
+6.
+Create view to store pno, pname and no of employees working on the project.
+7.
+Write a procedure to display details of the employees working on particular project. Use cursor.
+15
+Create following tables in mysql
+Emp(eno, ename, sal, contact_no, addr, dno)
+project(pno, pname)
+dept(dno, dname, loc)
+assigned_to(eno, pno)
+Write the SQL queries:
+8.
+Gather details of employees working on project 353 and 354.
+9.
+Obtains the details of employees working on the database project.
+10.
+Find the employee nos of employees who work on at least one project that employee 107 works on.
+11.
+Find the employee no of employees who work on all of the projects that employee 107 works on.
+12.
+Find the project with minimum no of employees.
+13.
+Create view to store pno, pname and no of employees working on the project.
+Write a procedure to display details of the employees working on particular project. Use cursor.
+16
+Bank Database:
+A bank database keeps record of the details of customers, accounts, loans and transactions such as deposits or withdraws. Customer record should include customer id, customer name, address, age, contact number, email id etc., accounts details involves account number, account type(fixed account, savings account, monthly account etc), date of creation of the account, balance. Transaction detail keeps information about amount deposited or withdrawn to/from a particular account and the date of transaction. The database should also store record of loans which include loan amount, loan date and the account number to which the loan is granted.
+Make appropriate tables for the above database and try to find out the following queries: (Apply appropriate triggers whenever required)
+a)
+List the details of account holders who have a ‘savings’ account.
+b)
+List the Name and address of account holders with loan amount more than 50,000.
+c)
+Change the name of the customer to ‘ABC’ whose account number is ’TU001’
+d)
+List the account number with total deposit more than 80,000.
+e)
+List the number of fixed deposit accounts in the bank.
+f)
+Display the detailed transactions on 28th Aug, 2008.
+h)
+Display the total amount deposited and withdrawn on 29th Aug, 2008.
+i)
+List the details of customers who have a loan.
+j)
+Write a procedure to display Savings and Loan information of all customers.
+17
+Create following tables in mysql
+Emp(eno, ename, sal, contact_no, addr, dno)
+project(pno, pname)
+dept(dno, dname, loc)
+assigned_to(eno, pno)
+Write the SQL queries:
+14.
+Gather details of employees working on project 353 and 354.
+15.
+Obtains the details of employees working on the database project.
+16.
+Find the employee nos of employees who work on at least one project that employee 107 works on.
+17.
+Find the employee no of employees who work on all of the projects that employee 107 works on.
+18.
+Find the project with minimum no of employees.
+19.
+Create view to store pno, pname and no of employees working on the project.
+20.
+Write a procedure to display details of the employees working on particular project. Use cursor.
+18
+You need to create a movie database.
+Create three tables, one for
+actors(AID, name),
+movies(MID, title) and
+actor_role(MID, AID, rolename).
+Use appropriate data types for each of the attributes, and add appropriate primary/foreign key constraints.
+7.
+Insert data to the above tables (approx 3 to 6 rows in each table), including data for actor "Charlie Chaplin", and for yourself (using your roll number as ID).
+8.
+Write a query to list all movies in which actor "Charlie Chaplin" has acted, along with the number of roles he had in that movie.
+9.
+Write a query to list all actors who have not acted in any movie
+10.
+List names of actors, along with titles of movies they have acted in. If they have not acted in any movie, show the movie title as null.
+11.
+List all roles of a given actor
+12.
+Write a trigger to convert actor name in uppercase.
+19
+Consider the relational database
+Employee (person-name, street, city)
+works (person-name, company-name, salary)
+Company (company-name, city)
+Manages (person-name, manager-name)
+Consider the above relational database.
+Write SQL queries for the following:
+1.
+Find the names, street address, and cities of residence of all employees who work for First Bank Corporation and earn more than $10,000 per annum.
+2.
+Find the names of all employees in this database who live in the same city as the company for which they work.
+3.
+Find the names of all employees who live in the same city and on the same street as do their managers.
+4.
+Write a Trigger on update of employee company_name
+20
+Convert the above ER diagrams into Relational Models and Write Any 5 DQL Statement for the same
+21 Consider the following Relations.
+Branch (B_No, B_name, B_city, asset),
+Customer (C_No,C_Name, C_city street)
+Loan (Loan_no, B_name, amount),
+Borrower (C_No, Loan_No),
+Write SQL query for the following:
+1) Find the names and address of customers who have a loan.
+2) Find loan data, ordered by decreasing amounts, then increasing loan numbers.
+3) Find the pairs of names of different customers who live at the same address but have loan at different
+branches.
+4)Write a procedure that calculate total loan amount for a particular branch
+5) Write a trigger which keeps track of updated amount of loan .
+22 Consider following database:
+Student (Roll_no, Name, Address)
+Subject (Sub_code, Sub_name)
+Marks (Roll_no, Sub_code, marks)
+Write following queries in SQL:
+i) Find average marks of each student, along with the name of student.
+ii) Find how many students have failed in the subject “DBMS”.
+iii) Find the students who get marks greater than 75 and and also find student who get less than 40.
+iv) Find the student whose addresses are ‘PUNE’
+Gallery_address
+PaintingTheme
+Gallery_No
+GALLERY
+PAINTER paints PAINTING
+displaye
+d
+Painter_Cd Painting_id Painting_De
+sc
+Painter_Name
+Address Contact_No
+Gallery_Name
+1
+M
+M
+1
+v) Write a Trigger that check the rollno must be start with ‘TE’.
+23
+Customer (Cust_no,name,,Street,city,state)
+Order(Order_no,Cust_no,Order_date,Ship_date,Tocity,ToState,ToZip) Contain(Order_no,Stock_no,quantity,Discount)
+Stock(Stock_no,price,tax)
+Write a database trigger to update a stock table when a record is inserted in contains table.
+1.
+Display all the Purchase orders of a specific Customer.
+2.
+Get the Total Value of Purchase Orders.
+3.
+List the Purchase Orders in descending order as per total.
+4.
+Delete Purchase Order 1001
+5.
+Create index on table order with column order_no
+6.
+Create View on columns Order_no and Customer_no with order table
+24
+Consider the following relational schema. An employee can work in more than one department.
+Emp(eid: integer, ename: string, salary: real)
+Works(eid: integer, did: integer)
+Dept(did: integer, dname: string, managerid: integer, floornum: integer)
+Write the following Queries:
+1.
+Print the names of all employees who work on the 10th floor and make less than Rs. 50,000.
+2.
+Print the names of all managers who manage three or more departments on the same floor.
+3.
+Write a procedure to Give every employee who works in the toy department a 10 percent raise.
+4.
+Print the names and salaries of employees who work in both the toy department and the Music department.
+5.
+Print the names of employees who earn a salary that is either less than Rs. 10,000 or more than Rs. 100,000.
+6.
+Print all of the attributes for employees who work in some department that employee Abhishek also works in.
+7.
+Write a Procedure to Print the names of all employees who work on the floor(s) where Amar Arora works.
 
-void main(void) {
-    sum = 0;
-    for(int i = 0; i <= 8; i++) {
-        sum += arr[i];
-    }
-    TRISD = 0;
-    PORTD = sum;
-}
+
+
+
+CREATE TABLE Students(
+Roll_no VARCHAR(10) PRIMARY KEY,
+Name VARCHAR(50),
+Address VARCHAR(50)
+);
+
+CREATE TABLE Subjects(
+Sub_code VARCHAR(10) PRIMARY KEY,
+Sub_name VARCHAR(50)
+);
+
+CREATE TABLE MARKS(
+MARKS INT,
+Roll_no VARCHAR(10),
+Sub_code VARCHAR(10),
+FOREIGN KEY (Roll_no) references Students(Roll_no),
+FOREIGN KEY (Sub_code) references Subjects(Sub_code)
+);
+
+INSERT INTO Students VALUES('1','John','Pune');
+INSERT INTO Students VALUES('2','Xavier','Mumbai');
+INSERT INTO Students VALUES('3','Ahmed','Jalgaon');
+INSERT INTO Students VALUES('4','Krisna','Ahmednagar');
+INSERT INTO Students VALUES('5','Torres','Paris');
+INSERT INTO Students VALUES('6','Daniel','Berlin');
+INSERT INTO Students VALUES('7','Lana','Pune');
+
+INSERT INTO Subjects VALUES('A1','DBMS');
+INSERT INTO Subjects VALUES('B1','PSDL');
+
+
+
+INSERT INTO Marks VALUES('25','1','A1');
+INSERT INTO Marks VALUES('30','1','B1');
+
+INSERT INTO Marks VALUES('35','2','A1');
+INSERT INTO Marks VALUES('45','2','B1');
+
+INSERT INTO Marks VALUES('55','3','A1');
+INSERT INTO Marks VALUES('65','3','B1');
+
+INSERT INTO Marks VALUES('70','4','A1');
+INSERT INTO Marks VALUES('50','4','B1');
+
+INSERT INTO Marks VALUES('25','5','A1');
+INSERT INTO Marks VALUES('35','5','B1');
+
+INSERT INTO Marks VALUES('45','6','A1');
+INSERT INTO Marks VALUES('35','6','B1');
+
+INSERT INTO Marks VALUES('45','7','A1');
+INSERT INTO Marks VALUES('35','7','B1');
+
+
+SELECT s.name, AVG (m.Marks) AS Avg_Marks 
+FROM Students s
+JOIN Marks m ON s.Roll_no=m.Roll_no
+GROUP BY s.name;
+
+SELECT COUNT(*) AS Failed_Count 
+FROM Marks m
+JOIN Subjects sub ON m.Sub_code = sub.Sub_code
+WHERE sub.Sub_name = 'DBMS' AND m.Marks<40;
+
+SELECT * FROM Marks WHERE marks > 55 ;
+SELECT * FROM Marks WHERE marks < 40;
+SELECT * FROM Students WHERE Address = 'PUNE';
+
+DELIMITER //
+
+
+CREATE TRIGGER CheckRollPrefix
+BEFORE INSERT ON Student
+FOR EACH ROW
+BEGIN
+  IF LEFT(NEW.Roll_no, 2) != 'TE' THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Roll number must start with TE';
+  END IF;
+END //
+
+DELIMITER ;
+
