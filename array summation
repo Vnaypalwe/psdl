@@ -489,8 +489,13 @@ FROM Marks m
 JOIN Subjects sub ON m.Sub_code = sub.Sub_code
 WHERE sub.Sub_name = 'DBMS' AND m.Marks<40;
 
-SELECT * FROM Marks WHERE marks > 55 ;
-SELECT * FROM Marks WHERE marks < 40;
+SELECT DISTINCT s.Name, m.Marks
+FROM Students s JOIN Marks m ON m.Roll_no=s.Roll_no
+WHERE Marks>75;
+SELECT DISTINCT s.Name, m.Marks
+FROM Students s JOIN Marks m ON m.Roll_no=s.Roll_no
+WHERE Marks<40;
+
 SELECT * FROM Students WHERE Address = 'PUNE';
 
 DELIMITER //
